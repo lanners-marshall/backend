@@ -17,8 +17,10 @@ const notesRoutes = require('./Routes/notesRoutes');
 server.use('/users', userRoutes);
 server.use('/notes', notesRoutes);
 
+const port = process.env.PORT;
+
 if (process.env.NODE_ENV !== 'test') {
-  server.listen(5555, () => console.log('running on port 5555'));
+  server.listen(port, () => console.log('running on port 5555'));
 }
 
 module.exports = server;
