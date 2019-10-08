@@ -1,12 +1,10 @@
+require('custom-env').env();
 const express = require('express');
 const server = express();
 const helmet = require('helmet');
 const cors = require('cors');
 const morgan = require('morgan');
 const knex = require('knex');
-require('custom-env').env();
-const dbConfig = require('./knexfile');
-const db = knex(dbConfig.development);
 
 server.use(express.json());
 server.use(helmet());
