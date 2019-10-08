@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "NODE_ENV=test jest --verbose --watch --coverage "
+    "test": "NODE_ENV=test jest --verbose --watch --coverage ",
+    "start": "NODE_ENV=production node server.js",
+    "dev": "NODE_ENV=test=development nodemon server.js"
   },
   "author": "",
   "license": "ISC",
