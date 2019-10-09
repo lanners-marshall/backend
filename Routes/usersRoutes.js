@@ -33,7 +33,7 @@ router.get('', (req, res) => {
 router.post('/register', (req, res) => {
   let { username, email, password } = req.body;
   password = bcrypt.hashSync(password, 13);
-  db('collaborators').insert({ name: username });
+
   db('users')
     .insert({ username, email, password })
     .then(ids => {
@@ -42,9 +42,12 @@ router.post('/register', (req, res) => {
         .first()
         .then(user => {
           const token = generateToken(user);
-          return res
-            .status(201)
-            .json({ token, id: user.id, name: user.username });
+          const user_info = { token, id: user.id, name: user.username };
+          db('collaborators')
+            .insert({ name: username })
+            .then(() => {
+              return res.status(200).json(user_info);
+            });
         });
     })
     .catch(err => {
