@@ -39,7 +39,6 @@ describe('notes', () => {
   it('should cause an error on new note', done => {
     request(server)
       .post('/notes')
-      .set('Authorization', token)
       .send({
         titlel: 'New Note Title',
         body: 'New Note Body',
@@ -53,7 +52,6 @@ describe('notes', () => {
   it('should create a new note /notes', done => {
     request(server)
       .post('/notes')
-      .set('Authorization', token)
       .send({
         title: 'New Note Title',
         body: 'New Note Body',
@@ -67,7 +65,6 @@ describe('notes', () => {
   it('should get a specific note', done => {
     request(server)
       .post('/notes')
-      .set('Authorization', token)
       .send({
         titlel: 'New Note Title',
         body: 'New Note Body',
@@ -104,7 +101,6 @@ describe('notes', () => {
   it('should update a note', done => {
     request(server)
       .post('/notes')
-      .set('Authorization', token)
       .send({
         titlel: 'New Note Title',
         body: 'New Note Body',
@@ -115,7 +111,6 @@ describe('notes', () => {
       .end((req, res) => {
         request(server)
           .put('/notes/1')
-          .set('Authorization', token)
           .send({
             title: 'Updated Title',
             body: 'updated body'
@@ -127,7 +122,6 @@ describe('notes', () => {
   it('should update a note error on updating a note', done => {
     request(server)
       .post('/notes')
-      .set('Authorization', token)
       .send({
         title: 'New Note Title',
         body: 'New Note Body',
@@ -138,7 +132,6 @@ describe('notes', () => {
       .end((req, res) => {
         request(server)
           .put('/notes/1')
-          .set('Authorization', token)
           .send({
             titlee: 'Updated Title',
             bodyy: 'updated body'
@@ -150,7 +143,6 @@ describe('notes', () => {
   it('should delete a note', done => {
     request(server)
       .post('/notes')
-      .set('Authorization', token)
       .send({
         title: 'New Note Title',
         body: 'New Note Body',
@@ -161,7 +153,6 @@ describe('notes', () => {
       .end((req, res) => {
         request(server)
           .delete('/notes/1')
-          .set('Authorization', token)
           .expect(200, done);
       });
   });

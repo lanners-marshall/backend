@@ -8,7 +8,7 @@ const db = knex(dbConfig);
 const protects = require('./middleWear.js');
 
 //create a note
-router.post('', protects, (req, res) => {
+router.post('', (req, res) => {
   const { title, body, user_id, collaborators, author } = req.body;
   db('notes')
     .insert({ title, body, user_id, author })
@@ -68,7 +68,7 @@ router.get('/collaborators/:id', protects, (req, res) => {
 });
 
 //update a note
-router.put('/:id', protects, (req, res) => {
+router.put('/:id', (req, res) => {
   const { title, body } = req.body;
   const { id } = req.params;
 
@@ -84,7 +84,7 @@ router.put('/:id', protects, (req, res) => {
 });
 
 //delete a note
-router.delete('/:id', protects, (req, res) => {
+router.delete('/:id', (req, res) => {
   const { id } = req.params;
 
   db('notes')
