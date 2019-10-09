@@ -36,13 +36,6 @@ describe('notes', () => {
       .expect(401, done);
   });
 
-  it('should error if wront token sent noes', done => {
-    request(server)
-      .get('/notes')
-      .set('Authorization', 'wrong token')
-      .expect(401, done);
-  });
-
   it('should cause an error on new note', done => {
     request(server)
       .post('/notes')
@@ -165,5 +158,12 @@ describe('notes', () => {
           .set('Authorization', token)
           .expect(200, done);
       });
+  });
+
+  it('should get all collaborators', done => {
+    request(server)
+      .get('/collaborators')
+      .set('Authorization', token)
+      .expect(200, done);
   });
 });
