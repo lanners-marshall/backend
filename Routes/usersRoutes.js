@@ -95,8 +95,13 @@ router.delete('/:id', (req, res) => {
   db('users')
     .where({ id })
     .del()
-    .then(response => {
-      return res.status(200).json(response);
+    .then(() => {
+      db('collaborators')
+        .where({ id })
+        .del()
+        .then(response => {
+          return res.status(200).json(response);
+        });
     });
 });
 
