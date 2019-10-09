@@ -46,7 +46,7 @@ router.post('/register', (req, res) => {
           db('collaborators')
             .insert({ name: username })
             .then(() => {
-              return res.status(200).json(user_info);
+              return res.status(201).json(user_info);
             });
         });
     })

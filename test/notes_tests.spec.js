@@ -43,8 +43,9 @@ describe('notes', () => {
       .send({
         titlel: 'New Note Title',
         body: 'New Note Body',
+        author: 'sam',
         user_id: 1,
-        collaborators: [1, 2, 3]
+        collaborators: [{ value: 1 }, { value: 2 }, { value: 3 }]
       })
       .expect(500, done);
   });
@@ -56,8 +57,9 @@ describe('notes', () => {
       .send({
         title: 'New Note Title',
         body: 'New Note Body',
+        author: 'sam',
         user_id: 1,
-        collaborators: [1, 2, 3]
+        collaborators: [{ value: 1 }, { value: 2 }, { value: 3 }]
       })
       .expect(201, done);
   });
@@ -69,8 +71,9 @@ describe('notes', () => {
       .send({
         titlel: 'New Note Title',
         body: 'New Note Body',
+        author: 'sam',
         user_id: 1,
-        collaborators: [1, 2, 3]
+        collaborators: [{ value: 1 }, { value: 2 }, { value: 3 }]
       })
       .end((req, res) => {
         request(server)
@@ -88,7 +91,7 @@ describe('notes', () => {
         titlel: 'New Note Title',
         body: 'New Note Body',
         user_id: 1,
-        collaborators: [1, 2, 3]
+        collaborators: [{ value: 1 }, { value: 2 }, { value: 3 }]
       })
       .end((req, res) => {
         request(server)
@@ -105,8 +108,9 @@ describe('notes', () => {
       .send({
         titlel: 'New Note Title',
         body: 'New Note Body',
+        author: 'sam',
         user_id: 1,
-        collaborators: [1, 2, 3]
+        collaborators: [{ value: 1 }, { value: 2 }, { value: 3 }]
       })
       .end((req, res) => {
         request(server)
@@ -127,8 +131,9 @@ describe('notes', () => {
       .send({
         title: 'New Note Title',
         body: 'New Note Body',
+        author: 'sam',
         user_id: 1,
-        collaborators: [1, 2, 3]
+        collaborators: [{ value: 1 }, { value: 2 }, { value: 3 }]
       })
       .end((req, res) => {
         request(server)
@@ -150,7 +155,8 @@ describe('notes', () => {
         title: 'New Note Title',
         body: 'New Note Body',
         user_id: 1,
-        collaborators: [1, 2, 3]
+        author: 'sam',
+        collaborators: [{ value: 1 }, { value: 2 }, { value: 3 }]
       })
       .end((req, res) => {
         request(server)

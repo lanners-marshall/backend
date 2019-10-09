@@ -9,16 +9,15 @@ const protects = require('./middleWear.js');
 
 //create a note
 router.post('', protects, (req, res) => {
-  const { title, body, user_id, collaborators } = req.body;
-
+  const { title, body, user_id, collaborators, author } = req.body;
   db('notes')
-    .insert({ title, body, user_id })
+    .insert({ title, body, user_id, author })
     .then(response => {
       const notes_collaborators = [];
       for (let i = 0; i < collaborators.length; i++) {
         notes_collaborators.push({
           note_id: response[0],
-          collaborator_id: collaborators[i].id
+          collaborator_id: collaborators[i].value
         });
       }
       db('notes_collaborators')

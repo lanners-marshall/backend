@@ -9,6 +9,8 @@ exports.up = function(knex, Promise) {
 
     tbl.string('body').notNullable();
 
+    tbl.string('author').notNullable();
+
     tbl
       .integer('user_id')
       .unsigned()
