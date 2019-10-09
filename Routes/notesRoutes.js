@@ -18,7 +18,7 @@ router.post('', protects, (req, res) => {
       for (let i = 0; i < collaborators.length; i++) {
         notes_collaborators.push({
           note_id: response[0],
-          collaborator_id: collaborators[i]
+          collaborator_id: collaborators[i].id
         });
       }
       db('notes_collaborators')
