@@ -69,6 +69,7 @@ router.get('/collaborators/:id', protects, (req, res) => {
       'notes_collaborators.collaborator_id'
     )
     .where('notes.id', id)
+    .select('collaborator_id', 'name')
     .then(response => {
       return res.status(200).json(response);
     });
