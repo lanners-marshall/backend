@@ -20,11 +20,7 @@ router.post('', (req, res) => {
           collaborator_id: collaborators[i].value
         });
       }
-      db('notes_collaborators')
-        .insert(notes_collaborators)
-        .then(response2 => {
-          return res.status(201).json(response2);
-        });
+      return db('notes_collaborators').insert(notes_collaborators);
     })
     .catch(error => {
       console.log(error);
