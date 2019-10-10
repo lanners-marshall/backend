@@ -7,28 +7,26 @@ const dbConfig = require('../knexfile.js')[environment];
 const db = knex(dbConfig);
 const protects = require('./middleWear.js');
 
+const getCollabs = (collaborators, id) => {
+  const notes_collaborators = [];
+  for (let i = 0; i < collaborators.length; i++) {
+    notes_collaborators.push({
+      note_id: id,
+      collaborator_id: collaborators[i].value
+    });
+  }
+  return notes_collaborators;
+};
+
 //create a note
 router.post('', (req, res) => {
   const { title, body, user_id, collaborators, author } = req.body;
   db('notes')
     .insert({ title, body, user_id, author })
     .then(async () => {
-      const response = await db('notes').where({
-        title,
-        body,
-        user_id,
-        author
-      });
-
+      const response = await db('notes').where({ title });
       const id = response[0].id;
-      const notes_collaborators = [];
-      for (let i = 0; i < collaborators.length; i++) {
-        notes_collaborators.push({
-          note_id: id,
-          collaborator_id: collaborators[i].value
-        });
-      }
-
+      const notes_collaborators = getCollabs(collaborators, id);
       db('notes_collaborators')
         .insert(notes_collaborators)
         .then(response2 => {
@@ -36,7 +34,6 @@ router.post('', (req, res) => {
         });
     })
     .catch(error => {
-      console.log(error);
       return res.status(500).json(error);
     });
 });
