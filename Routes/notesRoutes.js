@@ -13,6 +13,7 @@ router.post('', (req, res) => {
   db('notes')
     .insert({ title, body, user_id, author })
     .then(response => {
+      console.log(response);
       const notes_collaborators = [];
       for (let i = 0; i < collaborators.length; i++) {
         notes_collaborators.push({
