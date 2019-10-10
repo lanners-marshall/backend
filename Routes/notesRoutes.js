@@ -20,6 +20,7 @@ router.post('', (req, res) => {
           collaborator_id: collaborators[i].value
         });
       }
+      console.log(notes_collaborators);
       return db('notes_collaborators').insert(notes_collaborators);
     })
     .catch(error => {
