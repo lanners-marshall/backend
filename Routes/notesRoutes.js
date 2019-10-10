@@ -20,7 +20,7 @@ router.post('', (req, res) => {
         author
       });
 
-      console.log(response);
+      const id = response[0].id;
       const notes_collaborators = [];
       for (let i = 0; i < collaborators.length; i++) {
         notes_collaborators.push({
