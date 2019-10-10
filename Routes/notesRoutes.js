@@ -8,12 +8,14 @@ const db = knex(dbConfig);
 const protects = require('./middleWear.js');
 
 //create a note
-router.post('', async (req, res) => {
+router.post('', (req, res) => {
   const { title, body, user_id, collaborators, author } = req.body;
   db('notes')
     .insert({ title, body, user_id, author })
-    .then(() => {
-      const id = await db('notes').where({ title, body, user_id, author }).first()
+    .then(async () => {
+      const id = await db('notes')
+        .where({ title, body, user_id, author })
+        .first();
       const notes_collaborators = [];
       for (let i = 0; i < collaborators.length; i++) {
         notes_collaborators.push({
