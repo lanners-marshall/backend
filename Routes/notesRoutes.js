@@ -13,9 +13,14 @@ router.post('', (req, res) => {
   db('notes')
     .insert({ title, body, user_id, author })
     .then(async () => {
-      const id = await db('notes')
-        .where({ title, body, user_id, author })
-        .first().id;
+      const response = await db('notes').where({
+        title,
+        body,
+        user_id,
+        author
+      });
+
+      console.log(response);
       const notes_collaborators = [];
       for (let i = 0; i < collaborators.length; i++) {
         notes_collaborators.push({
