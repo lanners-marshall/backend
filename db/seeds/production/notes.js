@@ -20,7 +20,7 @@ const generatorNotes = () => {
     } else if (counter === 30) {
       name = 'Melvin';
       user_id = 4;
-    } else if (counter > 50) {
+    } else if (counter === 50) {
       name = 'Roberto';
       user_id = 5;
     }
@@ -29,12 +29,7 @@ const generatorNotes = () => {
   return notes;
 };
 
-exports.seed = function(knex) {
-  // Deletes ALL existing entries
-  return knex('notes')
-    .del()
-    .then(function() {
-      // Inserts seed entries
-      return knex('notes').insert(generatorNotes());
-    });
+exports.seed = async function(knex) {
+  const fakeNotes = generatorNotes();
+  await knex('notes').insert(fakeNotes);
 };
