@@ -94,11 +94,12 @@ router.put('/:id', (req, res) => {
 //delete a note
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-
+  console.log({ id });
   db('notes')
     .where({ id })
     .del()
     .then(response => {
+      console.log(response);
       return res.status(200).json(response);
     });
 });
