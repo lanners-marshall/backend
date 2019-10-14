@@ -7,14 +7,16 @@ exports.up = function(knex, Promise) {
       .unsigned()
       .notNullable()
       .references('id')
-      .inTable('notes');
+      .inTable('notes')
+      .onDelete('CASCADE');
 
     tbl
       .integer('collaborator_id')
       .unsigned()
       .notNullable()
       .references('id')
-      .inTable('collaborators');
+      .inTable('collaborators')
+      .onDelete('CASCADE');
   });
 };
 
