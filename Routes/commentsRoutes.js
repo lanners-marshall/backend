@@ -22,7 +22,7 @@ router.post('', (req, res) => {
 });
 
 //get all comments for a note
-router.get('//note/:id', (req, res) => {
+router.get('/note/:id', (req, res) => {
   const { id } = req.params;
 
   db('notes')
