@@ -28,7 +28,7 @@ router.get('/note/:id', (req, res) => {
   db('notes')
     .join('comments', 'notes.id', '=', 'comments.note_id')
     .where('notes.id', id)
-    .select('content', 'commenter')
+    .select('content', 'commenter', 'id')
     .then(response => {
       console.log(response);
       return res.status(200).json(response);
