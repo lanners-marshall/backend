@@ -13,10 +13,12 @@ server.use(cors());
 const userRoutes = require('./Routes/usersRoutes');
 const notesRoutes = require('./Routes/notesRoutes');
 const collaboratorsRoutes = require('./Routes/collaboratorsRoutes');
+const commentsRoutes = require('./Routes/commentsRoutes');
 
 server.use('/users', userRoutes);
 server.use('/notes', notesRoutes);
 server.use('/collaborators', collaboratorsRoutes);
+server.use('/comments', commentsRoutes);
 
 const port = process.env.PORT;
 
