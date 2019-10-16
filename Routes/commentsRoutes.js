@@ -22,7 +22,7 @@ router.post('', (req, res) => {
 });
 
 //get all comments for a note
-router.get('/:id', (req, res) => {
+router.get('/note/:id', (req, res) => {
   const { id } = req.params;
 
   db('notes')
@@ -30,9 +30,11 @@ router.get('/:id', (req, res) => {
     .where('notes.id', id)
     .select('content', 'commenter')
     .then(response => {
+      console.log(response);
       return res.status(200).json(response);
     })
     .catch(error => {
+      console.log(error);
       return res.status(500).json(error);
     });
 });
@@ -53,6 +55,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+//delete a comment
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   db('comments')
