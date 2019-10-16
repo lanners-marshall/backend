@@ -30,12 +30,7 @@ router.get('/note/:id', (req, res) => {
     .where('notes.id', id)
     .select('content', 'commenter', 'comments.id')
     .then(response => {
-      console.log(response);
       return res.status(200).json(response);
-    })
-    .catch(error => {
-      console.log(error);
-      return res.status(500).json(error);
     });
 });
 
@@ -51,7 +46,7 @@ router.put('/:id', (req, res) => {
       return res.status(200).json(response);
     })
     .catch(error => {
-      return res.status(200).json(error);
+      return res.status(500).json(error);
     });
 });
 
@@ -63,9 +58,6 @@ router.delete('/:id', (req, res) => {
     .del()
     .then(response => {
       return res.status(200).json(response);
-    })
-    .catch(error => {
-      return res.status(500).json(error);
     });
 });
 
