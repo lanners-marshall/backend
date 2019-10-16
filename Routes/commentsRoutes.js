@@ -22,11 +22,11 @@ router.post('', (req, res) => {
 });
 
 //get all comments for a note
-router.get('/note/:id', (req, res) => {
+router.get('//note/:id', (req, res) => {
   const { id } = req.params;
 
   db('notes')
-    .join('comments', 'note.id', '=', 'comment.note_id')
+    .join('comments', 'notes.id', '=', 'comment.note_id')
     .where('notes.id', id)
     .select('content', 'commenter')
     .then(response => {
