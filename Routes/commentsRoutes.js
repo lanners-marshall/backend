@@ -26,7 +26,7 @@ router.get('/note/:id', (req, res) => {
   const { id } = req.params;
 
   db('notes')
-    .join('comments', 'notes.id', '=', 'comment.note_id')
+    .join('comments', 'notes.id', '=', 'comments.note_id')
     .where('notes.id', id)
     .select('content', 'commenter')
     .then(response => {
