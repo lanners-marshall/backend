@@ -11,7 +11,7 @@ exports.up = function(knex, Promise) {
       .unsigned()
       .notNullable()
       .references('id')
-      .inTable('note')
+      .inTable('notes')
       .onDelete('CASCADE');
   });
 };
